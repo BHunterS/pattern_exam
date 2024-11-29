@@ -1,0 +1,39 @@
+@startuml
+
+abstract class AnnouncementWindow {
+    - Scanner scanner
+    + createWindow()
+    # createCategorySection()
+    # createPersonalDataSection()
+    # createMainInfoSection()
+    # createContactDataSection()
+    # getCategoriesWithSubcategories() : Map<String, List<String>>
+    # getPersonalDataFields() : List<String>
+    # getMainInfoPlaceholder() : String
+    # getContactFields() : List<String>
+}
+
+class KharkivCourierWindow {
+    + getCategories() : List<String>
+    + getPersonalDataFields() : List<String>
+    + getMainInfoPlaceholder() : String
+    + getContactFields() : List<String>
+}
+
+class FreeAdWindow {
+    + getCategories() : List<String>
+    + getPersonalDataFields() : List<String>
+    + getMainInfoPlaceholder() : String
+    + getContactFields() : List<String>
+}
+
+class Main {
+    + main(args: String[]) : void
+}
+
+AnnouncementWindow <|-- KharkivCourierWindow
+AnnouncementWindow <|-- FreeAdWindow
+
+Main ..> AnnouncementWindow : uses
+
+@enduml
